@@ -48,7 +48,7 @@ features                                  :
 
   - title                                 : Deck Value Tracker
     description                           : Easily track the total value of your Pokémon deck and see how your collection grows over time.
-    fontawesome_icon_name                 : chart-simple
+    fontawesome_icon_name                 : chart-line
 
   - title                                 : Instant Price Updates
     description                           : Stay up to date with real-time price changes and make informed decisions when buying or selling cards.
