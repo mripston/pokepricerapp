@@ -1,7 +1,7 @@
 ---
 title: "Holo vs Reverse Holo Pokémon Cards: What's the Difference?"
 description: "On a holo card the artwork is shiny. On a reverse holo the artwork is flat and the rest of the card is shiny. They are priced as separate cards."
-date: 2026-11-13
+date: 2026-11-13T12:00:00
 category: card-values
 tags: ["holo", "reverse holo", "printings"]
 faq:

@@ -1,7 +1,7 @@
 ---
 title: "How to Tell if a Pokémon Card Is Rare: Symbols Explained"
 description: "Look at the small symbol in the bottom corner of the card. A circle is common, a diamond is uncommon and a star is rare. Here is what the rest mean."
-date: 2026-11-13
+date: 2026-11-13T12:02:00
 category: collecting-guides
 tags: ["rarity", "rarity symbols", "beginners"]
 faq:

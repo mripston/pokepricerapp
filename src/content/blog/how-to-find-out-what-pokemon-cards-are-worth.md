@@ -1,7 +1,7 @@
 ---
 title: "How to Find Out What Your Pokémon Cards Are Worth"
 description: "Identify the exact card, judge its condition honestly, then check recent sold prices rather than asking prices. Here is the process step by step."
-date: 2026-11-13
+date: 2026-11-13T12:01:00
 category: card-values
 tags: ["card values", "pricing", "selling"]
 faq:

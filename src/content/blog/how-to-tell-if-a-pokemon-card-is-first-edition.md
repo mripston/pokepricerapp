@@ -1,7 +1,7 @@
 ---
 title: "How to Tell if a Pokémon Card Is First Edition (Stamp Guide)"
 description: "Look for a small black circle with a 1 inside and the word EDITION above it, just below the left corner of the artwork. No stamp means it is not 1st Edition."
-date: 2026-11-13
+date: 2026-11-13T19:27:00
 category: how-to
 tags: ["1st edition", "vintage cards", "beginners"]
 faq:
