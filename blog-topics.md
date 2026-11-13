@@ -7,7 +7,6 @@ Categories: `card-values`, `collecting-guides`, `how-to`, `buying-selling`, `set
 
 ## Queue
 
-- [ ] How to Tell if a Pokémon Card Is 1st Edition | how-to | how to tell if a pokemon card is first edition
 - [ ] How to Spot Fake Pokémon Cards | how-to | how to tell if a pokemon card is fake
 - [ ] Where to Sell Pokémon Cards: Options by Card Value | buying-selling | where to sell pokemon cards
 - [ ] Pokémon Card Condition Guide: Near Mint to Damaged | collecting-guides | pokemon card condition guide
@@ -49,3 +48,5 @@ Categories: `card-values`, `collecting-guides`, `how-to`, `buying-selling`, `set
 - [ ] What Is a Pokémon Card Print Line? | collecting-guides | pokemon card print line
 
 ## Done
+
+- [x] How to Tell if a Pokémon Card Is 1st Edition | how-to | how to tell if a pokemon card is first edition | 2026-11-13
