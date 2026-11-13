@@ -1,0 +1,200 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import StoreBadge from '../components/StoreBadge.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE } from '../config';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => p.data.date <= new Date())
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const steps = [
+  { title: 'Scan the card', text: 'Hold a card up to your iPhone camera. Poké Pricer recognises it in seconds, and keeps scanning as you feed it more.' },
+  { title: 'See the live price', text: 'Get the current market price for the exact printing you are holding, with 90 days of history behind it.' },
+  { title: 'Add it to your collection', text: 'File cards into your collection and watch the total value update every day.' },
+];
+
+const features = [
+  { icon: 'M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M8 12h8', title: 'Stack scanning', text: 'Scan card after card without stopping. Each one is priced as you go and added to a running total. Free and unlimited.' },
+  { icon: 'M12 3v18M16.5 7.5c0-1.7-2-3-4.5-3s-4.5 1.3-4.5 3 2 3 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3', title: 'Live market prices', text: 'Prices come from TCGplayer and Cardmarket, so you see what cards are selling for right now.' },
+  { icon: 'M4 5h16M4 12h16M4 19h10', title: 'Every printing, priced separately', text: 'A reverse holo is a different card. Poké Pricer shows each printing and finish with its own price.' },
+  { icon: 'M3 17l5-5 4 4 8-9M15 7h5v5', title: '90 days of price history', text: 'Every card has a free price chart, so you can tell a short spike from a steady climb.' },
+  { icon: 'M6 9a6 6 0 1 1 12 0c0 6 2.5 7 2.5 7h-17S6 15 6 9zM10 20a2 2 0 0 0 4 0', title: 'Price alerts', text: 'Set a price on any card and get told the moment it rises above or falls below it.' },
+  { icon: 'M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20', title: '174 sets to complete', text: 'Browse every set and watch each one fill in as you scan. Search all 20,000+ printings offline.' },
+];
+
+const shots = [
+  { file: 'scan', alt: 'Scan a whole stack: card after card, priced as you go' },
+  { file: 'editions', alt: 'A reverse holo is a different card: each printing priced separately' },
+  { file: 'collection', alt: 'Your collection, counted: every card valued and updated every day' },
+  { file: 'sets', alt: '174 sets to chase: watch each one fill in as you scan' },
+  { file: 'history', alt: 'See where it has been: 90 days of price history on every card' },
+  { file: 'alerts', alt: 'Told the moment it moves: set a price alert on any card' },
+  { file: 'search', alt: 'Every card, offline: 20,444 printings on your phone' },
+];
+
+const faq = [
+  { q: 'How does Poké Pricer work out what a card is worth?', a: 'The app identifies your card, then shows current market prices sourced from TCGplayer and Cardmarket for that exact printing. Prices are for raw, ungraded cards and are a market estimate rather than a formal appraisal.' },
+  { q: 'Is Poké Pricer free?', a: 'Yes, it is free to download, and card scanning is free and unlimited. Every card also includes 90 days of price history for free. An optional subscription unlocks additional features.' },
+  { q: 'Why does the same card show several different prices?', a: 'Many Pokémon cards exist in more than one printing or finish, such as normal, holofoil and reverse holofoil. These can sell for very different amounts, so the app lists each one separately and asks you to pick the one you have.' },
+  { q: 'Can I track my whole collection?', a: 'Yes. Scan cards into your collection and the app keeps a running total that is re-priced every day. You can also follow completion across 174 sets.' },
+  { q: 'Does it grade my cards?', a: 'No. Poké Pricer is a scanner and price tracker, not a grading service. Condition still matters, so treat prices as a guide for near mint copies.' },
+  { q: 'Which devices does it support?', a: 'Poké Pricer is available for iPhone running iOS 17 or later. There is no Android version at the moment.' },
+  { q: 'Does it work without an internet connection?', a: 'Card search works offline, with more than 20,000 printings stored on your phone. Live prices need a connection.' },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Poké Pricer: TCG Card Scanner',
+    operatingSystem: 'iOS',
+    applicationCategory: 'ReferenceApplication',
+    url: SITE.url,
+    downloadUrl: SITE.appStoreUrl,
+    image: `${SITE.url}/icon.png`,
+    description: SITE.description,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: SITE.rating.value, ratingCount: SITE.rating.count },
+    publisher: { '@type': 'Organization', name: SITE.company, url: SITE.companyUrl },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<Base jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Free on iPhone</span>
+        <h1>Scan any Pokémon card. See what it's <span class="hl">really worth</span>.</h1>
+        <p class="lead">
+          Poké Pricer turns your iPhone camera into a Pokémon card scanner and price checker. Live market prices,
+          price history and a collection that values itself.
+        </p>
+        <div class="hero-cta">
+          <StoreBadge placement="hero" rating />
+        </div>
+      </div>
+      <div class="hero-phones">
+        <img src="/screenshots/hero-scan.webp" alt="Poké Pricer scanning an Umbreon VMAX and pricing it at $288" width="680" height="1363" fetchpriority="high" />
+        <img src="/screenshots/hero-collection.webp" alt="Poké Pricer collection screen with a total value of $19,543" width="680" height="1363" />
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="At a glance">
+    <div class="wrap">
+      <div class="stat"><strong>20,000+</strong><span>card printings covered</span></div>
+      <div class="stat"><strong>174</strong><span>sets to track and complete</span></div>
+      <div class="stat"><strong>90 days</strong><span>of price history, free</span></div>
+      <div class="stat"><strong>Unlimited</strong><span>free card scans</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>From card to price in three steps</h2>
+      </div>
+      <div class="grid c3">
+        {steps.map((s, i) => (
+          <div class="card">
+            <span class="step-num">0{i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why Poké Pricer</span>
+        <h2>Everything you need to price a collection</h2>
+        <p>Built for collectors who want a straight answer about what their cards are worth.</p>
+      </div>
+      <div class="grid c3">
+        {features.map((f) => (
+          <div class="card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={f.icon} /></svg>
+            </div>
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="screenshots">
+    <div class="section-head wrap">
+      <span class="eyebrow">A look inside</span>
+      <h2>See it in action</h2>
+    </div>
+    <div class="shots">
+      {shots.map((s) => (
+        <figure>
+          <img src={`/screenshots/${s.file}.webp`} alt={s.alt} width="800" height="1738" loading="lazy" />
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Stop guessing</span>
+        <h2>The card in your hand is not always the card you looked up</h2>
+        <p>
+          Two cards with the same name and number can be priced hundreds of dollars apart. Poké Pricer shows you
+          every printing so you price the one you actually pulled.
+        </p>
+      </div>
+      <ul class="checks">
+        <li>Know before you trade or sell<span>Check the market price in seconds, right at the table.</span></li>
+        <li>Find the hits in a bulk box<span>Scan a stack and let the running total show you where the value is.</span></li>
+        <li>Watch your collection grow<span>Your total is re-priced daily, with risers and fallers called out.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Common questions</h2>
+      </div>
+      <Faq items={faq} />
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="section soft">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">From the blog</span>
+          <h2>Guides for collectors</h2>
+        </div>
+        <div class="grid c3">
+          {posts.map((post) => <PostCard post={post} heading="h3" />)}
+        </div>
+        <p style="text-align:center;margin:34px 0 0"><a href="/blog/"><strong>See all articles →</strong></a></p>
+      </div>
+    </section>
+  )}
+
+  <CtaBand />
+</Base>

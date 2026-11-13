@@ -1,0 +1,16 @@
+---
+import StoreBadge from './StoreBadge.astro';
+interface Props { heading?: string; text?: string }
+const {
+  heading = 'Know what your cards are worth.',
+  text = 'Scan your first card in seconds. Scanning is free and unlimited.',
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>{heading}</h2>
+    <p>{text}</p>
+    <StoreBadge placement="cta-band" rating />
+  </div>
+</section>

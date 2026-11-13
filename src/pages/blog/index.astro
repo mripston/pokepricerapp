@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => p.data.date <= new Date())
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base
+  title="Pokémon Card Guides: Values, Rarity and Collecting Tips"
+  description="Plain-English guides to Pokémon card values, rarity, printings, buying and selling, from the team behind the Poké Pricer card scanner."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">The Poké Pricer blog</span>
+      <h1>Pokémon card guides</h1>
+      <p>What your cards are worth, how to tell printings apart, and how to buy and sell without getting burned.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid c3">
+        {posts.map((post) => <PostCard post={post} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

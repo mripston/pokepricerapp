@@ -1,0 +1,54 @@
+---
+import { SITE } from '../config';
+import { LANDING_PAGES } from '../data/landing';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/">
+          <img src="/favicon.png" alt="" width="36" height="36" />
+          {SITE.name}
+        </a>
+        <p style="margin-top:14px;max-width:300px">
+          The Pokémon card scanner and price checker for iPhone.
+        </p>
+      </div>
+      <div>
+        <h4>Use it for</h4>
+        <ul>
+          {LANDING_PAGES.map((p) => <li><a href={`/${p.slug}/`}>{p.nav}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h4>{SITE.name}</h4>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/privacypolicy/">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href={SITE.appStoreUrl} data-store="footer" rel="noopener">Download on the App Store</a></li>
+          <li><a href={`mailto:${SITE.email}`}>Email support</a></li>
+          <li><a href={`https://x.com/${SITE.twitter}`} rel="noopener">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>
+        © {year} <a href={SITE.companyUrl} rel="noopener">{SITE.company}</a>. All rights reserved.
+      </p>
+      <p>
+        Pokémon and Pokémon Trading Card Game are trademarks of Nintendo, Creatures Inc. and GAME FREAK inc.
+        {SITE.name} is not affiliated with, sponsored or endorsed by The Pokémon Company International, Nintendo,
+        Creatures Inc. or GAME FREAK inc. Prices shown in the app are market estimates, not appraisals.
+      </p>
+    </div>
+  </div>
+</footer>

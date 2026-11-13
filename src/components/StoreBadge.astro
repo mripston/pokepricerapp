@@ -1,0 +1,15 @@
+---
+import { SITE } from '../config';
+interface Props { placement: string; rating?: boolean }
+const { placement, rating = false } = Astro.props;
+---
+
+<a class="store" href={SITE.appStoreUrl} data-store={placement} rel="noopener">
+  <img src="/appstore-badge.png" alt="Download Poké Pricer on the App Store" width="158" height="54" />
+</a>
+{rating && (
+  <div class="rating">
+    <span class="stars" aria-hidden="true">★★★★★</span>
+    <span>{SITE.rating.value} on the App Store · Free</span>
+  </div>
+)}
