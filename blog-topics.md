@@ -7,7 +7,6 @@ Categories: `card-values`, `collecting-guides`, `how-to`, `buying-selling`, `set
 
 ## Queue
 
-- [ ] How to Spot Fake Pokémon Cards | how-to | how to tell if a pokemon card is fake
 - [ ] Where to Sell Pokémon Cards: Options by Card Value | buying-selling | where to sell pokemon cards
 - [ ] Pokémon Card Condition Guide: Near Mint to Damaged | collecting-guides | pokemon card condition guide
 - [ ] Is It Worth Grading Pokémon Cards? | buying-selling | is it worth grading pokemon cards
@@ -50,3 +49,4 @@ Categories: `card-values`, `collecting-guides`, `how-to`, `buying-selling`, `set
 ## Done
 
 - [x] How to Tell if a Pokémon Card Is 1st Edition | how-to | how to tell if a pokemon card is first edition | 2026-11-13
+- [x] How to Spot Fake Pokémon Cards | how-to | how to tell if a pokemon card is fake | 2026-11-16
